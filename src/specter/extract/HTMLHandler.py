@@ -2,18 +2,18 @@ import requests
 from abc import ABC, abstractmethod
 
 
-class HTMLSource(ABC):
+class HTMLHandler(ABC):
     @abstractmethod
     def get_html(self, url):
         pass
 
 
-class HTMLSourceWeb(HTMLSource):
+class HTMLHandlerWeb(HTMLHandler):
     def get_html(self, url):
         return requests.get(url).content
 
 
-class HTMLSourceLocal(HTMLSource):
+class HTMLHandlerLocal(HTMLHandler):
     def get_html(self, filepath):
         with open(filepath, 'r') as f:
             return f.read()
