@@ -6,6 +6,7 @@ import pandas as pd
 
 
 class TransformAPI:
+    """Normalizes the semi-processed csv data, and produces a new csv."""
     def __init__(self, path_input: str, path_output: str):
         self.path_input = path_input
         self.path_output = path_output
@@ -43,7 +44,7 @@ class TransformAPI:
     @staticmethod
     def replace_blank_dictval(value):
         if not re.search(r'\d', value):
-            return np.nan
+            return ''
         return value
 
 

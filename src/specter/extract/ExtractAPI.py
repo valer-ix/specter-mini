@@ -1,3 +1,4 @@
+import os.path
 import re
 import csv
 import logging
@@ -13,6 +14,7 @@ log = logging.getLogger(__name__)
 
 
 class Scraper:
+    """Retrieve website metrics."""
     def __init__(self, html_targetloc, html_handler: HTMLHandler = HTMLHandlerLocal()):
         self.html_target: str = html_targetloc
         self.html_handler: HTMLHandler = html_handler
@@ -131,6 +133,7 @@ class Scraper:
 
 
 class ExtractAPI:
+    """Handle multiple Scrapers."""
     def __init__(self, scrapers: List[Scraper]):
         self.scrapers = scrapers
         self.data = None
@@ -141,6 +144,7 @@ class ExtractAPI:
 
     def get_data(self) -> None:
         self.data = [[
+            'Site',
             'Global Rank',
             'Total Visits',
             'Bounce Rate',
@@ -154,6 +158,7 @@ class ExtractAPI:
         ]]
         for scraper in self.scrapers:
             row = [
+                os.path.basename(scraper.html_target),
                 scraper.get_global_rank(),
                 scraper.get_total_visits(),
                 scraper.get_bounce_rate(),
