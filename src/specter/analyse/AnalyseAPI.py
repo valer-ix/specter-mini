@@ -86,6 +86,7 @@ class AnalyseAPI:
         plt.figure(figsize=(10, 6))
         plt.scatter(df['site'], df['rank_score'])
         plt.title('Ranking based on growth in visits and rank')
+        plt.xticks(rotation=45)
         plt.xlabel('Website')
         plt.ylabel('Rank score')
         plt.tight_layout()
