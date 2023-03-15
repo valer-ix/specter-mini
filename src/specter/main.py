@@ -1,4 +1,5 @@
 from definitions import ROOT_DIR
+
 from src.specter.extract.HTMLHandler import HTMLHandlerLocal
 from src.specter.extract.ExtractAPI import Scraper, ExtractAPI
 from src.specter.transform.TransformAPI import TransformAPI
@@ -14,8 +15,8 @@ locs = [
     f'{ROOT_DIR}/data/raw/similarweb-pitchbook-com.html',
     f'{ROOT_DIR}/data/raw/similarweb-stripe-com.html',
 ]
-scrapers_ = [Scraper(loc, HTMLHandlerLocal()) for loc in locs]
-extract_api = ExtractAPI(scrapers_)
+scrapers = [Scraper(loc, HTMLHandlerLocal()) for loc in locs]
+extract_api = ExtractAPI(scrapers)
 extract_api.extract_data(filepath=f'{ROOT_DIR}/data/processed/semi/scrape_data.csv')
 
 # Transform #

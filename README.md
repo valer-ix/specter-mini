@@ -7,3 +7,4 @@ The process can be run end-to-end from `src/specter/main.py`
 - The fully transformed data is loaded into SQLite here — `data/db/website_metrics.db`
 - The plots are saved here — `data/plots`
 
+Answers to the set questions can be found in `Q&A.md`.
